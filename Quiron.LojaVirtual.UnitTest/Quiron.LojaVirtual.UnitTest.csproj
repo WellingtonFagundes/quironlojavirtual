@@ -53,6 +53,16 @@
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Quiron.LojaVirtual.Dominio\Quiron.LojaVirtual.Dominio.csproj">
+      <Project>{641f7132-9812-4d98-8f49-b0cc7f4b92ef}</Project>
+      <Name>Quiron.LojaVirtual.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Quiron.LojaVirtual.Web\Quiron.LojaVirtual.Web.csproj">
+      <Project>{51f1a7f7-cdda-4d2f-916d-bd7657a22bc7}</Project>
+      <Name>Quiron.LojaVirtual.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
