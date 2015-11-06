@@ -13,18 +13,43 @@ namespace Quiron.LojaVirtual.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //1 - Início (equivale a / - Produtos de todas as categorias)
+            routes.MapRoute(null,
+                "",
+                new { controller = "Vitrine"
+                    , action = "ListaProdutos"
+                    , categoria = (string)null , pagina = 1 }
+             );
 
+
+            //2 - (Equivale a /Pagina2 - Todas as categorias da página 2)
+            routes.MapRoute(null,
+                "Pagina{pagina}",
+                new { controller = "Vitrine"
+                    , action = "ListaProdutos"
+                    , categoria = (string)null }
+                    , new { pagina = @"\d+" }
+             );
+
+
+            //3 - (Equivale a /Futebol - Primeira página da categoria futebol)
             routes.MapRoute(
                 name: null,
-                url: "Pagina{pagina}",
-                defaults: new { controller = "Vitrine",action = "ListaProdutos"}
+                url: "{categoria}",
+                defaults: new { controller = "Vitrine",action = "ListaProdutos",pagina = 1}
                 );
 
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Vitrine", action = "ListaProdutos", id = UrlParameter.Optional }
-            );
+
+            //4 - (Equivale a /Futebol/Pagina2 - Página 2 da categoria futebol)
+            routes.MapRoute(null,
+                "{categoria}/Pagina{pagina}",
+                 new {controller = "Vitrine"
+                     , action = "ListaProdutos"}
+                     ,new { pagina = @"\d+"}
+                );
+
+            //Default
+            routes.MapRoute(null, "{controller}/{action}");
         }
     }
 }
