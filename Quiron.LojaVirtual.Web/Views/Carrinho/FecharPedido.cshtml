@@ -45,5 +45,31 @@
 
     <input class="btn btn-primary" type="submit" value="Fechar o Pedido"/>
     
+    
 }
 
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<!-- JQuery: ID CEP ao mudar algo no campo fará uma tarefa-->
+<script>
+    $('#Cep').change(function(e) {
+       //Previne um possível post
+        e.preventDefault();
+
+        $("#Endereco").val('');
+        $("#Bairro").val('');
+        $("#Cidade").val('');
+        $("#Estado").val('');
+
+        var cep = $('#Cep').val().replace("-", "");
+        $.getJSON("http://cep.republicavirtual.com.br/web_cep.php?cep=" + cep + "&formato=json", {}, function(data) {
+
+            if (data.resultado_txt == 'sucesso - cep completo') {
+                $("#Endereco").val(data.tipo_logradouro + ' ' + data.logradouro);
+                $("#Bairro").val(data.bairro);
+                $("#Cidade").val(data.cidade);
+                $("#Estado").val(data.uf);
+            }
+        });
+    });
+</script>
