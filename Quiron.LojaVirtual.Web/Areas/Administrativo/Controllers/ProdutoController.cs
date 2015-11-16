@@ -20,12 +20,30 @@ namespace Quiron.LojaVirtual.Web.Areas.Administrativo.Controllers
             return View(produtos);
         }
 
+        //GET
         public ViewResult Alterar(int produtoId)
         {
             _repositorio = new ProdutosRepositorio();
 
             Produto produto = _repositorio.Produtos
                 .FirstOrDefault(p => p.ProdutoId == produtoId);
+
+            return View(produto);
+        }
+
+        //Post
+        [HttpPost]
+        public ActionResult Alterar(Produto produto)
+        {
+            if (ModelState.IsValid)
+            {
+                _repositorio = new ProdutosRepositorio();
+                _repositorio.Salvar(produto);
+
+                TempData["mensagem"] = string.Format("{0} foi salvo com sucesso.", produto.Nome);
+
+                return RedirectToAction("Index");
+            }
 
             return View(produto);
         }
