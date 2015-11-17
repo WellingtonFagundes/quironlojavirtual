@@ -1,0 +1,83 @@
+﻿<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="deleteModalLabel">Exclusão</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden"/>
+                <p>Deseja excluir o produto <em><strong>"<span></span>"</strong></em>&nbsp;</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success">Confirmar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- JQuery -->
+<script>
+    $(function() {
+
+        //Abrir o Modal
+        $(".btn-xs").click(function (e) {
+            e.preventDefault();
+            var id = this.id;
+            var nome = this.name;
+
+            //Captura o id do botão clicado
+            $("#deleteModal .modal-body input[type=hidden]").val(id);
+
+            //Incrementa dentro da tag <span></span> o nome selecionado
+            $("#deleteModal .modal-body span").text(nome);
+
+            //Exibe o modal
+            $("#deleteModal").modal('show');
+            //alert(id);
+        });
+
+        //Ao clicar no botã o confirmar, localizado através do código abaixo
+        $("#deleteModal .modal-footer button").click(function (e) {
+            var url = "/Administrativo/Produto/Excluir/";
+            //Capturando o valor do hidden do Deseja excluir o produto
+            var id = $(" .modal-body input[type=hidden]").val();
+
+            //Coletando a linha selecionada, formato row-id igual tr da página index.cshtml
+            var rowNum = '#row-' + id;
+            //alert(rowNum);
+
+            $.ajax({
+
+                url: url,
+                type: 'post',
+                datatype: 'json',
+                data: { produtoid: id },
+                
+                beforeSend: function () {
+                    
+                    var loading = "<span><em>Excluindo</em>&nbsp;<i class='glyphicon glyphicon-refresh icon-refresh-animate'></i></span>";
+                    $('#deleteModal .modal-header h4').after(loading);
+                    
+                    
+                },
+
+                success: function () {
+                    $('#deleteModal').modal('hide');
+                    $(rowNum).animate({ opacity: 0.0 }, 400, function() {
+                        $(rowNum).remove();
+                    });
+                },
+
+                complete: function (data) {
+                    //Limpa a DIV
+                    $('#divexcluir').empty();
+                    //Adiciona uma classe do bootstrap
+                    $('#divexcluir').addClass("alert alert-success");
+                    $('#divexcluir').html(data.responseText);
+                }
+            });
+        });
+    });
+</script>

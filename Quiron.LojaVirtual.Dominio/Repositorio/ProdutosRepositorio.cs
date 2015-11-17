@@ -39,5 +39,20 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
 
             _context.SaveChanges();
         }
+
+
+        //Excluir Produto
+        public Produto Excluir(int produtoid)
+        {
+            Produto prod = _context.Produtos.Find(produtoid);
+
+            if (prod != null)
+            {
+                _context.Produtos.Remove(prod);
+                _context.SaveChanges();
+            }
+
+            return prod;
+        }
     }
 }
