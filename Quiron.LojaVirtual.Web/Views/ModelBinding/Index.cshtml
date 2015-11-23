@@ -1,0 +1,37 @@
+﻿@model Quiron.LojaVirtual.Dominio.Entidades.Produto
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @using (Html.BeginForm("Editar","ModelBinding",FormMethod.Post)) 
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            Nome:
+            <input type="text" name="Nome" id="Nome"/>
+
+            <br/>
+
+            Preço:
+            <input type="text" name="Preco" id="Preco" />
+
+
+            <input type="submit" name="Cadastrar" id="Cadastrar" value="Cadastrar"/>
+        </div>
+        
+        
+    }
+    
+ 
+</body>
+</html>
