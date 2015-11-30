@@ -24,7 +24,7 @@ namespace Quiron.LojaVirtual.Web.App_Start
                 "~/Content/ErroEstilo.css"
                 ));
 
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
         }
     }
 }

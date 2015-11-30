@@ -6,7 +6,7 @@
     @Html.Partial("ProdutoDetalhes",p);
 }
 
-<!-- Paginação -->
-<div class="btn-group pull-right">
+<!-- Paginação por números (antigo na Vitrine)-->
+@*<div class="btn-group pull-right">
     @Html.PageLinks(Model.Paginacao, x => Url.Action("ListaProdutos", new { pagina = x, categoria = Model.CategoriaAtual }))
-</div>
+</div>*@
