@@ -1,4 +1,5 @@
-﻿@model Quiron.LojaVirtual.Dominio.Entidades.Produto
+﻿@using Quiron.LojaVirtual.Web.HTMLHelpers
+@model Quiron.LojaVirtual.Dominio.Entidades.Produto
 
 
 <div class="well">
@@ -12,7 +13,7 @@
 
 <div class="row">
     <h4>
-        @Html.ActionLink(@Model.Nome, "Detalhes", "Vitrine", new { id = Model.ProdutoId }, new { @class = "deco-none" })
+        @Html.ActionLink(@Model.Nome, "Detalhes", "Vitrine", new { id = Model.ProdutoId, produto = @Model.Nome.ToSeoUrl() }, new { @class = "deco-none" })
         <br />
         <span class="pull-right label label-primary">
             @Model.Preco.ToString("c")
