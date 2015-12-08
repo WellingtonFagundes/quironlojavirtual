@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Web;
 using Quiron.LojaVirtual.Dominio.Entidades;
 using Quiron.LojaVirtual.Dominio.Entidades.Vitrine;
@@ -25,5 +26,17 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
         {
             return _context.MarcaVitrine.OrderBy(m => m.MarcaDescricao);
         }
+
+
+        public IEnumerable<ClubesNacionais> ObterClubesNacionais()
+        {
+            return _context.ClubesNacionais.OrderBy(c => c.LinhaDescricao);
+        }
+
+        public IEnumerable<ClubesInternacionais> ObterClubesInternacionais()
+        {
+            return _context.ClubesInternacionais.OrderBy(c => c.LinhaDescricao);
+        }
+
     }
 }
