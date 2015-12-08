@@ -12,6 +12,7 @@ app.inicializar = function() {
     app.ObterMarcas();
     app.ObterClubesNacionais();
     app.ObterClubesInternacionais();
+    app.ObterSelecoes();
 }
 
 app.ObterEsportes = function() {
@@ -49,6 +50,16 @@ app.ObterClubesInternacionais = function () {
     $.getJSON('/menu/obterclubesinternacionais', function (data) {
         $(data).each(function () {
             $('#clubesinternacionais').append("<li><a href='nav/times/" + this.ClubeCodigo + "/" + this.ClubeSeo + "'>" + this.Clube + "</a></li>");
+        });
+    });
+
+};
+
+app.ObterSelecoes = function () {
+
+    $.getJSON('/menu/obterselecoes', function (data) {
+        $(data).each(function () {
+            $('#selecoes').append("<li><a href='nav/times/" + this.ClubeCodigo + "/" + this.ClubeSeo + "'>" + this.Clube + "</a></li>");
         });
     });
 
