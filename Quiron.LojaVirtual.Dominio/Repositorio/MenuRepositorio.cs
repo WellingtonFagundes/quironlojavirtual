@@ -42,6 +42,5 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
         {
             return _context.Selecoes.OrderBy(s => s.LinhaDescricao);
         }
-
     }
 }

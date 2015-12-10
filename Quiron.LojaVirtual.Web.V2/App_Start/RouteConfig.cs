@@ -11,6 +11,10 @@ namespace Quiron.LojaVirtual.Web.V2
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            //Para habilitar o efetuamento de roteamento na controller nav
+            routes.MapMvcAttributeRoutes();
+
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
