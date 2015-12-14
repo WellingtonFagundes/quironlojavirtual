@@ -11,6 +11,17 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
     {
         private readonly EfDbContext _context = new EfDbContext();
 
+        /// <summary>
+        /// Obter produtos da view SQL ProdutoVitrine
+        /// </summary>
+        /// <param name="categoria"></param>
+        /// <param name="genero"></param>
+        /// <param name="grupo"></param>
+        /// <param name="subgrupo"></param>
+        /// <param name="linha"></param>
+        /// <param name="marca"></param>
+        /// <param name="modalidade"></param>
+        /// <returns></returns>
         public List<ProdutoVitrine> ObterProdutosVitrine(string categoria = null,string genero = null
              ,string grupo = null,string subgrupo = null,string linha = null,string marca = null, string modalidade = null)
         {

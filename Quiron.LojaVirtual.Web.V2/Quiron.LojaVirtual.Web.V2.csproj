@@ -270,6 +270,7 @@
     <Content Include="Views\Shared\_Marcas.cshtml" />
     <Content Include="Views\Nav\Index.cshtml" />
     <Content Include="Views\Nav\_Nav.cshtml" />
+    <Content Include="Views\Nav\Navegacao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Quiron.LojaVirtual.Dominio\Quiron.LojaVirtual.Dominio.csproj">
