@@ -39,6 +39,21 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
         }
 
 
+        [Route("nav/{id}/{Categoria}")]
+        public ActionResult ObterProdutosPorCategorias(string id, string categoria)
+        {
+            _repositorio = new ProdutoModeloRepositorio();
+            var produtos = _repositorio.ObterProdutosVitrine(categoria: id);
+            _model = new ProdutosViewModel
+            {
+                Produtos = produtos,
+                Titulo = categoria
+            };
+
+            return View("Navegacao", _model);
+        }
+
+
         [Route("nav/{id}/{marca}")]
         public ActionResult ObterProdutosPorMarcas(string id,string marca)
         {
@@ -68,6 +83,8 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
 
             return View("Navegacao", _model);
         }
+
+        
 
         [Route("nav/genero/{id}/{genero}")]
         public ActionResult ObterProdutosPorGenero(string id, string genero)

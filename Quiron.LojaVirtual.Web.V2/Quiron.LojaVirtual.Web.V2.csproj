@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -271,6 +272,8 @@
     <Content Include="Views\Nav\Index.cshtml" />
     <Content Include="Views\Nav\_Nav.cshtml" />
     <Content Include="Views\Nav\Navegacao.cshtml" />
+    <Content Include="Views\Nav\_Vitrine.cshtml" />
+    <Content Include="Views\Nav\_NavTresColunas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Quiron.LojaVirtual.Dominio\Quiron.LojaVirtual.Dominio.csproj">

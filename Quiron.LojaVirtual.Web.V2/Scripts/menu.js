@@ -19,7 +19,7 @@ app.ObterEsportes = function() {
 
     $.getJSON('/menu/obteresportes', function(data) {
         $(data).each(function () {
-            $("#Esportes").append("<li><a href='#'>" + this.CategoriaDescricao + "</a></li>");
+            $("#Esportes").append("<li><a href='nav/" + this.CategoriaCodigo + "/" + this.CategoriaDescricaoSeo +"'>" + this.CategoriaDescricao + "</a></li>");
         });
     });
 
@@ -29,7 +29,7 @@ app.ObterMarcas = function () {
 
     $.getJSON('/menu/obtermarcas', function (data) {
         $(data).each(function () {
-            $(".marcas").append("<li><a href='#'>" + this.MarcaDescricao + "</a></li>");
+            $(".marcas").append("<li><a href='nav/" + this.MarcaCodigo + "/" + this.MarcaDescricaoSeo + "'>" + this.MarcaDescricao + "</a></li>");
         });
     });
 

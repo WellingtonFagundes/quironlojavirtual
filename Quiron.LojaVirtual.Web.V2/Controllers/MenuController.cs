@@ -23,9 +23,9 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
             var categorias = from c in cat
                 select new
                 {
-                    c.CategoriaDescricao,
+                    CategoriaDescricao = c.CategoriaDescricao,
                     CategoriaDescricaoSeo = c.CategoriaDescricao.ToSeoUrl(),
-                    c.CategoriaCodigo
+                    CategoriaCodigo = c.CategoriaCodigo
                 };
 
             return Json(categorias, JsonRequestBehavior.AllowGet);
@@ -42,9 +42,9 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
             var marcas = from m in listaMarcas
                 select new
                 {
-                    m.MarcaDescricao,
+                    MarcaDescricao = m.MarcaDescricao,
                     MarcaDescricaoSeo = m.MarcaDescricao.ToSeoUrl(),
-                    m.MarcaCodigo
+                    MarcaCodigo = m.MarcaCodigo
                 };
 
             return Json(marcas,JsonRequestBehavior.AllowGet);
