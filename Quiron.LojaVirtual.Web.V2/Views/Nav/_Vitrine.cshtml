@@ -29,17 +29,23 @@
                 <div class="sidey">
                     <ul class="nav">
                         
-                        <li>
-                             <a href="#"><span><span class="caret"></span></span>Tenis</a>
+                        <li class="">
+                            <a href="#">
+                                <span>
+                                    <span class="caret"></span>
+                                </span>
+                                <i class="fa fa-shopping-cart"></i>Tênis 
+                            </a>
                              <ul style="display: none;" data-index="0">
-                                 @*@Html.Action("TenisCategoria", "Nav")*@
-                                
+                                 @Html.Action("TenisCategoria", "Nav")
                             </ul>
-                         
                         </li>
                         
-                        <li>
-                             <a href="#"><span><span class="caret"></span></span>Casual</a>
+                        <li class="">
+                            <a href="#">
+                                <span><span class="caret"></span></span>
+                                <i class="fa fa-user"></i>&nbsp;Casual
+                            </a>
                              <ul style="display: none;" data-index="0">
                                  @*@Html.Action("CasualSubGrupo", "Nav")*@
                                 
@@ -47,8 +53,10 @@
                             
                         </li>
                         
-                        <li>
-                            <a href="#"><span><span class="caret"></span></span>Suplementos</a>
+                        <li class="">
+                            <a href="#"><span><span class="caret"></span></span>
+                                <i class="fa fa-male"></i>&nbsp;Suplementos
+                            </a>
                             <ul style="display: none;" data-index="0">
                                  @*@Html.Action("Suplementos", "Nav")*@
                                 
@@ -63,3 +71,4 @@
         </div>
     </div>
 </div>
+

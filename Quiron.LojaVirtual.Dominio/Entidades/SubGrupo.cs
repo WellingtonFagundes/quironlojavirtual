@@ -6,7 +6,8 @@ using System.Web;
 
 namespace Quiron.LojaVirtual.Dominio.Entidades
 {
-    public class SubGrupo
+    //As mesmas propriedades da tabela SubGrupo do banco
+    public sealed class SubGrupo
     {
         public int SubGrupoId { get; set; }
         public string GrupoCodigo { get; set; }

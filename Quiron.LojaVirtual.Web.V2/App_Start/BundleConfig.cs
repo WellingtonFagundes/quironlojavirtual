@@ -22,7 +22,17 @@ namespace Quiron.LojaVirtual.Web.V2
 
             bundles.Add(new ScriptBundle("~/js").Include(
                 "~/js/jquery.js",
-                "~/js/bootstrap.js"
+                "~/js/bootstrap.js",
+                "~/js/bootstrap.min.js",
+                "~/js/ddlevelsmenu.js",
+                "~/js/jquery.plugin.min.js",
+                "~/js/jquery.countdown.min.js",
+                "~/js/filter.js",
+                "~/js/respond.min.js",
+                "~/js/jquery.navgoco.min.js",
+                "~/js/html5shiv.js",
+                "~/js/custom.js"
+
                 ));
 
             // <!-- SmartMenu http://www.smartmenus.org -->

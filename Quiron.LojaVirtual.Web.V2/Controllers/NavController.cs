@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Quiron.LojaVirtual.Dominio.Repositorio;
+using Quiron.LojaVirtual.Web.V2.HTMLHelpers;
 using Quiron.LojaVirtual.Web.V2.Models;
 
 namespace Quiron.LojaVirtual.Web.V2.Controllers
@@ -12,6 +13,7 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
     {
         private ProdutoModeloRepositorio _repositorio;
         private ProdutosViewModel _model;
+        private MenuRepositorio _menuRepositorio;
         //
         // GET: /Nav/
         public ActionResult Index()
@@ -100,5 +102,39 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
 
             return View("Navegacao", _model);
         }
-	}
+
+        #region [Tênis por categoria]
+        /// <summary>
+        /// Obtêm categoria de tênis exibido no menu
+        /// </summary>
+        /// <returns></returns>
+        /// Filha de uma View (Vitrine - pai) como se fosse no usercontrols do webforms 
+        [ChildActionOnly]
+        [OutputCache(Duration = 3600,VaryByParam = "*")]
+        public ActionResult TenisCategoria()
+        {
+            _menuRepositorio = new MenuRepositorio();
+            var categorias = _menuRepositorio.ObterTenisCategoria();
+            var subgrupo = _menuRepositorio.SubGrupoTenis();
+
+            SubGrupoCategoriasViewModel model = new SubGrupoCategoriasViewModel()
+            {
+                Categorias = categorias,
+                SubGrupo = subgrupo
+            };
+
+            return PartialView("_TenisCategoria", model);
+        }
+
+        [Route("calcados/{subGrupoCodigo}/tenis/{categoriaCodigo}/{categoriaDescricao}")]
+        public ActionResult ObterTenisPorCategoria(string subGrupoCodigo,string categoriaCodigo,string categoriaDescricao)
+        {
+            _repositorio = new ProdutoModeloRepositorio();
+            var produtos = _repositorio.ObterProdutosVitrine(categoriaCodigo, subgrupo: subGrupoCodigo);
+            _model = new ProdutosViewModel { Produtos = produtos,Titulo = categoriaDescricao};
+            return View("Navegacao", _model);
+        }
+
+        #endregion
+    }
 }
