@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Quiron.LojaVirtual.Dominio.Entidades;
 using Quiron.LojaVirtual.Dominio.Repositorio;
 using Quiron.LojaVirtual.Web.V2.HTMLHelpers;
 using Quiron.LojaVirtual.Web.V2.Models;
@@ -134,6 +135,47 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
             _model = new ProdutosViewModel { Produtos = produtos,Titulo = categoriaDescricao};
             return View("Navegacao", _model);
         }
+
+        #endregion
+
+
+        #region [Casual]
+
+        //Obtém modalidades de casual exibido no Menu
+        [ChildActionOnly]
+        [OutputCache(Duration = 3600, VaryByParam = "*")]
+        public ActionResult CasualSubGrupo()
+        {
+            _menuRepositorio = new MenuRepositorio();
+            var casual = _menuRepositorio.ModalidadeCasual();
+            var subGrupo = _menuRepositorio.ObterCasualGrupo();
+
+            var model = new ModalidadeSubGrupoViewModel
+            {
+                Modalidade = casual,
+                SubGrupos = subGrupo
+            };
+
+            return PartialView("_CasualSubGrupo",model);
+        }
+
+
+        [Route("{modalidadeCodigo}/casual/{subGrupoCodigo}/{subGrupoDescricao}")]
+        public ActionResult ObterModalidadeSubgrupo(string modalidadeCodigo, string subGrupoCodigo, string subGrupoDescricao)
+        {
+             _repositorio = new ProdutoModeloRepositorio();
+
+            var produtos = _repositorio.ObterProdutosVitrine(modalidade: modalidadeCodigo, subgrupo: subGrupoCodigo);
+
+            _model = new ProdutosViewModel
+            {
+                Produtos = produtos,
+                Titulo = subGrupoDescricao
+            };
+
+            return View("Navegacao", _model);
+        }
+
 
         #endregion
     }

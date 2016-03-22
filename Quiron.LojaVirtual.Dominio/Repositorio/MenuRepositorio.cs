@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Web;
+using FastMapper;
+using Quiron.LojaVirtual.Dominio.Dto;
 using Quiron.LojaVirtual.Dominio.Entidades;
 using Quiron.LojaVirtual.Dominio.Entidades.Vitrine;
 
@@ -57,6 +59,44 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
         public SubGrupo SubGrupoTenis()
         {
             return _context.SubGrupos.FirstOrDefault(s => s.SubGrupoCodigo == "0084");
-        } 
+        }
+
+        #region [Menu lateral Casual]
+            //Retorna a modalidade Casual
+        public Modalidade ModalidadeCasual()
+        {
+            const string CODIGOMODALIDADE = "0001";
+
+            return _context.Modalidades.FirstOrDefault(m => m.ModalidadeCodigo == CODIGOMODALIDADE);
+        }
+
+        //Quando falamos de coleções temos 3 coleções principais:
+        //IEnumerable -> Lista somente leitura
+        //IQueryable -> Lista leitura e pesquisa
+        //IList -> Lista leitura, pesquisa, gravação = desde o .NET 2.0
+        //ICollection -> Alternativa mais recente, moderna, mais leve que o ILIST = .NET 4.0
+        public IEnumerable<SubGrupoDto> ObterCasualGrupo()
+        {
+            var subGrupos = new[] {"0001", "0102", "0103", "0738", "0084", "0921"};
+
+            var query = from s in _context.SubGrupos
+                //Claúsula in implementada no C#
+                .Where(s => subGrupos.Contains(s.SubGrupoCodigo))
+                .Select(s => new {s.SubGrupoCodigo, s.SubGrupoDescricao})
+                .Distinct()
+                .OrderBy(s => s.SubGrupoDescricao)
+
+                select new
+                {
+                    s.SubGrupoCodigo,
+                    s.SubGrupoDescricao
+                };
+
+            //Usabilidade do FastMapper
+            return query.Project().To<SubGrupoDto>().ToList();
+        }  
+
+
+        #endregion [Menu lateral Casual]
     }
 }
