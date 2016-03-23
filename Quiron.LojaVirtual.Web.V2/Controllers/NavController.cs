@@ -178,5 +178,42 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
 
 
         #endregion
+
+        #region [Menu Lateral Suplementos]
+
+        [ChildActionOnly]
+        [OutputCache(Duration = 3600, VaryByParam = "*")]
+        public ActionResult Suplementos()
+        {
+            _menuRepositorio = new MenuRepositorio();
+            var categoria = _menuRepositorio.Suplementos();
+            var subgrupos = _menuRepositorio.ObterSuplementos();
+
+            CategoriaSubGruposViewModel model = new CategoriaSubGruposViewModel
+            {
+                Categoria = categoria,
+                SubGrupos = subgrupos
+            };
+
+            return PartialView("_Suplementos", model);
+        }
+
+
+        [Route("{categoriaCodigo}/suplementos/{subGrupoCodigo}/{subGrupoDescricao}")]
+        public ActionResult ObterCategoriaSubgrupos(string categoriaCodigo, string subGrupoCodigo, string subGrupoDescricao)
+        {
+            _repositorio = new ProdutoModeloRepositorio();
+
+            var produtos = _repositorio.ObterProdutosVitrine(categoria: categoriaCodigo, subgrupo: subGrupoCodigo);
+
+            _model = new ProdutosViewModel
+            {
+                Produtos = produtos,
+                Titulo = subGrupoDescricao
+            };
+
+            return View("Navegacao", _model);
+        }
+        #endregion
     }
 }

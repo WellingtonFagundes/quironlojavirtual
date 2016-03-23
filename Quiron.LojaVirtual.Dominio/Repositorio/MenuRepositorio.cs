@@ -94,9 +94,30 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
 
             //Usabilidade do FastMapper
             return query.Project().To<SubGrupoDto>().ToList();
-        }  
+        }
 
 
         #endregion [Menu lateral Casual]
+
+        #region [Menu Lateral Suplementos]
+
+        public Categoria Suplementos()
+        {
+            var codigoSuplemento = "0008";
+
+            return _context.Categorias.FirstOrDefault(s => s.CategoriaCodigo == codigoSuplemento);
+        }
+
+
+        public IEnumerable<SubGrupo> ObterSuplementos()
+        {
+            var Subgrupos = new[] {"0162","0387","0557","0565","1082","1083","1084","1085", "0977" };
+
+            return _context.SubGrupos.Where(s => Subgrupos.Contains(s.SubGrupoCodigo) && s.GrupoCodigo == "0012")
+                .OrderBy(s => s.SubGrupoDescricao);
+        } 
+
+            
+        #endregion
     }
 }
