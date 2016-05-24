@@ -114,6 +114,24 @@
             </div>
 
         </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    @using (Html.BeginRouteForm("BuscaProduto", FormMethod.Get))
+                    {
+                        <div class="input-group">
+                            @Html.TextBox("termo",null,new { @class = "form-control", placeholder = "Clique aqui e faça a sua busca"})
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-danger">OK</button>
+                            </span>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+
     </div>
 
     <!-- Logo & Navigation ends -->
