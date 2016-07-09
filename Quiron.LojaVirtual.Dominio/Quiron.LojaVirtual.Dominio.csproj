@@ -88,6 +88,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\BreadCrumbDto.cs" />
     <Compile Include="Dto\DetalhesProdutoDto.cs" />
     <Compile Include="Dto\SubGrupoDto.cs" />
     <Compile Include="Entidades\Administrador.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Entidades\Modalidade.cs" />
     <Compile Include="Entidades\Pedido.cs" />
     <Compile Include="Entidades\Produto.cs" />
+    <Compile Include="Entidades\ProdutoModelo.cs" />
     <Compile Include="Entidades\QuironProduto.cs" />
     <Compile Include="Entidades\SubGrupo.cs" />
     <Compile Include="Entidades\Tamanho.cs" />

@@ -22,5 +22,11 @@ namespace Quiron.LojaVirtual.Dominio.Entidades
         public string ModeloDescricao { get; set; }
         public string UnidadeVenda { get; set; }
 
+        public string Imagem
+        {
+            get { return ProdutoCodigo.Substring(0, 8) + ".jpg"; }
+
+        }
+
     }
 }

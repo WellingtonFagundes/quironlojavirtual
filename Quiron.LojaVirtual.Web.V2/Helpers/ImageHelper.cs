@@ -15,5 +15,7 @@ namespace Quiron.LojaVirtual.Web.V2.Helpers
             _app = new AppSettingsReader();
             return _app.GetValue("Imagem", typeof (String)).ToString();
         }
+
+
     }
 }

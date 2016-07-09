@@ -50,6 +50,12 @@ namespace Quiron.LojaVirtual.Web.V2
                 "~/Scripts/menu.js"
                 ));
 
+            bundles.Add(new ScriptBundle("~/Scripts/detalhesproduto").Include(
+                "~/js/jquery.elevatezoom.js",
+                "~/Scripts/detalhesproduto.js"
+                ));
+
+
             BundleTable.EnableOptimizations = false;
 
         }
