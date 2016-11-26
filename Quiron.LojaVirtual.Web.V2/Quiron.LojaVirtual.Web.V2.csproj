@@ -290,6 +290,7 @@
     <Content Include="Views\Nav\_CasualSubGrupo.cshtml" />
     <Content Include="Views\Nav\_Suplementos.cshtml" />
     <Content Include="Views\DetalhesProdutos\Detalhes.cshtml" />
+    <Content Include="Views\DetalhesProdutos\_BreadCrumb.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Quiron.LojaVirtual.Dominio\Quiron.LojaVirtual.Dominio.csproj">

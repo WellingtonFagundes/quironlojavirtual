@@ -53,6 +53,14 @@
       <HintPath>..\packages\FastMapper.1.2.0\lib\net40\FastMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -94,9 +102,12 @@
     <Compile Include="Entidades\Administrador.cs" />
     <Compile Include="Entidades\Carrinho.cs" />
     <Compile Include="Entidades\Categoria.cs" />
+    <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\Cor.cs" />
+    <Compile Include="Entidades\DocumentoCliente.cs" />
     <Compile Include="Entidades\EmailConfiguracoes.cs" />
     <Compile Include="Entidades\EmailProcessarPedido.cs" />
+    <Compile Include="Entidades\EnderecoCliente.cs" />
     <Compile Include="Entidades\Estoque.cs" />
     <Compile Include="Entidades\FaixaEtaria.cs" />
     <Compile Include="Entidades\Genero.cs" />
@@ -109,12 +120,18 @@
     <Compile Include="Entidades\QuironProduto.cs" />
     <Compile Include="Entidades\SubGrupo.cs" />
     <Compile Include="Entidades\Tamanho.cs" />
+    <Compile Include="Entidades\TelefoneCliente.cs" />
     <Compile Include="Entidades\Vitrine\Clubes.cs" />
     <Compile Include="Entidades\Vitrine\ClubesInternacionais.cs" />
     <Compile Include="Entidades\Vitrine\ClubesNacionais.cs" />
     <Compile Include="Entidades\Vitrine\MarcaVitrine.cs" />
     <Compile Include="Entidades\Vitrine\ProdutoVitrine.cs" />
     <Compile Include="Entidades\Vitrine\Selecoes.cs" />
+    <Compile Include="Migrations\201610181236583_CriaClienteDB.cs" />
+    <Compile Include="Migrations\201610181236583_CriaClienteDB.Designer.cs">
+      <DependentUpon>201610181236583_CriaClienteDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\AdministradoresRepositorio.cs" />
     <Compile Include="Repositorio\CategoriaRepositorio.cs" />
@@ -123,6 +140,11 @@
     <Compile Include="Repositorio\MenuRepositorio.cs" />
     <Compile Include="Repositorio\ProdutoModeloRepositorio.cs" />
     <Compile Include="Repositorio\ProdutosRepositorio.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201610181236583_CriaClienteDB.resx">
+      <DependentUpon>201610181236583_CriaClienteDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

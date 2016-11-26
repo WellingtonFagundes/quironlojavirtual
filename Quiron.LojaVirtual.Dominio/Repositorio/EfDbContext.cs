@@ -4,13 +4,15 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Quiron.LojaVirtual.Dominio.Entidades;
 using Quiron.LojaVirtual.Dominio.Entidades.Vitrine;
 
 namespace Quiron.LojaVirtual.Dominio.Repositorio
 {
-    public class EfDbContext:DbContext
-    {
+    public class EfDbContext:IdentityDbContext<Cliente>
+   
+
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Administrador> Administradores { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
@@ -36,6 +38,9 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Entity<Produto>().ToTable("Produtos");
             modelBuilder.Entity<Administrador>().ToTable("Administradores");
+
+            //Para criar as chaves do IdentityDbContext<Cliente> ao gerar o banco
+            base.OnModelCreating(modelBuilder);
         }
 
 
