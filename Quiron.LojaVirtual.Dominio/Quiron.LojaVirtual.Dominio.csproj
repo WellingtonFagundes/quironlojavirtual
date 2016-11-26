@@ -127,9 +127,9 @@
     <Compile Include="Entidades\Vitrine\MarcaVitrine.cs" />
     <Compile Include="Entidades\Vitrine\ProdutoVitrine.cs" />
     <Compile Include="Entidades\Vitrine\Selecoes.cs" />
-    <Compile Include="Migrations\201610181236583_CriaClienteDB.cs" />
-    <Compile Include="Migrations\201610181236583_CriaClienteDB.Designer.cs">
-      <DependentUpon>201610181236583_CriaClienteDB.cs</DependentUpon>
+    <Compile Include="Migrations\201611262132425_CriaClienteNoDB.cs" />
+    <Compile Include="Migrations\201611262132425_CriaClienteNoDB.Designer.cs">
+      <DependentUpon>201611262132425_CriaClienteNoDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -142,8 +142,8 @@
     <Compile Include="Repositorio\ProdutosRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610181236583_CriaClienteDB.resx">
-      <DependentUpon>201610181236583_CriaClienteDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611262132425_CriaClienteNoDB.resx">
+      <DependentUpon>201611262132425_CriaClienteNoDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

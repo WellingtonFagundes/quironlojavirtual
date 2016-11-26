@@ -6,14 +6,14 @@ namespace Quiron.LojaVirtual.Dominio.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class CriaClienteDB : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class CriaClienteNoDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CriaClienteDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CriaClienteNoDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201610181236583_CriaClienteDB"; }
+            get { return "201611262132425_CriaClienteNoDB"; }
         }
         
         string IMigrationMetadata.Source

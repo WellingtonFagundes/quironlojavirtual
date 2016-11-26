@@ -89,7 +89,7 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
         }
 
 
-        [OutputCache(Duration = 3600, Location = OutputCacheLocation.Server, VaryByParam = "none")]
+       /* [OutputCache(Duration = 3600, Location = OutputCacheLocation.Server, VaryByParam = "none")]
         public JsonResult ObterSelecoes()
         {
             _repositorio = new MenuRepositorio();
@@ -105,6 +105,6 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
                          };
 
             return Json(selecoes, JsonRequestBehavior.AllowGet);
-        }
+        }*/
     }
 }

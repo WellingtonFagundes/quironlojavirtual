@@ -40,10 +40,10 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
             return _context.ClubesInternacionais.OrderBy(c => c.LinhaDescricao);
         }
 
-        public IEnumerable<Selecoes> ObterSelecoes()
+       /* public IEnumerable<Selecoes> ObterSelecoes()
         {
             return _context.Selecoes.OrderBy(s => s.LinhaDescricao);
-        }
+        }*/
 
         //Obtenho as categorias pré definidas através da query na tabela categoria
         public IEnumerable<Categoria> ObterTenisCategoria()

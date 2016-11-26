@@ -3,10 +3,10 @@ namespace Quiron.LojaVirtual.Dominio.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CriaClienteDB : DbMigration
+    public partial class CriaClienteNoDB : DbMigration
     {
         public override void Up()
-        {           
+        {            
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -30,6 +30,7 @@ namespace Quiron.LojaVirtual.Dominio.Migrations
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
             
+                    
             CreateTable(
                 "dbo.AspNetUsers",
                 c => new
@@ -115,13 +116,9 @@ namespace Quiron.LojaVirtual.Dominio.Migrations
                         Numero = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
-
-            //***********************************************************
-
-      
-
+            
         }
-
+        
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUsers", "Id", "dbo.TelefoneCliente");
