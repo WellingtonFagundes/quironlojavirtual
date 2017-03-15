@@ -1,0 +1,31 @@
+﻿@model Quiron.LojaVirtual.Dominio.Entidades.DocumentoCliente
+
+<div class="form-horizontal">
+            <h4>DocumentoCliente</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Valor)
+                    @Html.ValidationMessageFor(model => model.Valor)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DtNasc, htmlAttributes: new {@class = "control-label col-md-2"})
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DtNasc,new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                    @Html.ValidationMessageFor(model => model.DtNasc)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Tipo,EnumHelper.GetSelectList(typeof(Quiron.LojaVirtual.Dominio.Entidades.TipoDocumento)),new {@class="form-control"})
+                    @Html.ValidationMessageFor(model => model.Tipo,"",new {@class="text-danger"})
+                </div>
+            </div>
+
+        </div>

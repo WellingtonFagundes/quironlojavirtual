@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -82,8 +83,7 @@
                 <div class="col-md-2 col-sm-2">
                     <!-- Logo -->
                     <div class="logo">
-                        <h1><a href="/">Quiron</a>
-                        </h1>
+                        <h1>@Html.ActionLink("Quiron","Index","Nav") </h1>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-5">
@@ -99,8 +99,20 @@
 
                 <div class="col-md-7 col-sm-5">
                     <div class="kart-links">
-                        <a href="login.html">Seja bem vindo(a)! Faça seu Login</a>
-                        <a href="register.html">Meu cadastro</a>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <a href="@Url.Action("Login","Cliente")">Seja bem vindo(a)! Faça seu Login @User.Identity.GetUserName()</a>
+                            using (Html.BeginForm("Logoff", "Cliente", FormMethod.Post, new { id = "logoff-form", style = "display: inline;" }))
+                            {
+                                <a href="javascript:document.getElementById('logoff-form').submit()">Logoff</a>
+                            }
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Login","Cliente")">Seja bem vindo(a)! Faça seu Login</a>
+                        }
+
+                        <a href="@Url.Action("CriaCliente","Cliente")">Meu cadastro</a>
                         <a href="register.html">Meus pedidos</a>
                         <a data-toggle="modal" href="#shoppingcart"><i class="fa fa-shopping-cart"></i> 3 Items - $300</a>
                     </div>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Web;
@@ -10,6 +11,8 @@ namespace Quiron.LojaVirtual.Dominio.Entidades
 {
     public class Cliente: IdentityUser
     {
+        [NotMapped]
+        public string Senha { get; set; }
         //Com o virtual relação de 1 para 1 neste caso
         //Telefone
         [Required]
